@@ -121,7 +121,9 @@ class NavbarContainer extends Component {
             to={`/category/${gender}`}
             className="text-white"
             onClick={() => {
-              return resetKeywords(), this.toggle();
+              resetKeywords(); 
+              this.toggle();
+              return;
             }}
           >
             {gender}

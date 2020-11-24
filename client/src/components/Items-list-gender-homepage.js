@@ -7,11 +7,8 @@ import {
 import { 
   Row,
   Col,
-  Button,
   Card, 
   CardImg, 
-  CardBody, 
-  Alert,
   Container
 } from 'reactstrap';
 

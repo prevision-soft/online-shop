@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react'
 import { 
-  Badge, 
-  Button, 
+  Badge,
   ListGroupItem, 
   Collapse,
   Col,
@@ -23,9 +22,6 @@ const CheckoutStepThree = ({
   step3Unlock,
   toggle,
   getUserAddress,
-  onSubmitOrder,
-  selectorTotalAmountCart,
-  totalDelivery
 }) => {
 
   const { 

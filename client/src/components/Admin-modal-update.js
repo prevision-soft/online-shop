@@ -170,7 +170,6 @@ class AdminModalUpdate extends Component {
           </ModalBody>
           <ModalFooter>
             <Button
-            
               color="primary"
               onClick={
                 this.onSubmit(
