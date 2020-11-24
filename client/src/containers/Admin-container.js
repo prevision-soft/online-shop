@@ -8,7 +8,7 @@ class AdminContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
-      email: 'admin',
+      email: 'admin@gmail.com',
       password: 'admin',
       apiResponse: ''
     };

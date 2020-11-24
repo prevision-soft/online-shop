@@ -132,17 +132,23 @@ router.post('/signin', passport.authenticate('local', {session:false}), Authenti
 
 router.post('/signup', Authentication.signup);
 
-router.get('/query',(req,res) =>{
+router.post('/query',(req,res) =>{
   const tags ={ 
-    tags:req.body.data
+    tags:{$regex : new RegExp(req.body.data, "i")}
   };
+  const title ={
+    title:{$regex : new RegExp(req.body.data,"i")}
+  }
+  const description ={
+    description:{$regex : new RegExp(req.body.data,"i")}
+  }
 
-  
-  ModelProducts.find(tags,(err,data) =>{
-    if(err)
-      return res.status(404).json({error:'not found'});
+  ModelProducts.find().or([tags,title,description]).then(data =>{
+    if(!Array.isArray(data) || data.length ===0) return res.status(404).json({error:'not found'})
     res.status(200).json(data);
-  })
+  }).catch(err => res.status(404).json({error:'not found'}))
+ 
+
 })
 
 module.exports = router;
