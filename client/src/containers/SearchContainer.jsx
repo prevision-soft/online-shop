@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { Table } from "reactstrap";
 
 class SearchContainer extends Component {
@@ -65,7 +66,7 @@ class SearchContainer extends Component {
           <tr>
             <th>#</th>
             <th>Title</th>
-            <th>Id</th>
+            <th>Details</th>
             <th>Price</th>
             <th>Colors</th>
             <th>Sizes</th>
@@ -79,7 +80,7 @@ class SearchContainer extends Component {
             <tr key={x._id}>
               <th scope="row">{index + 1}</th>
               <td>{x.title}</td>
-              <td>{x._id}</td>
+              <td><Link to={`/item/${x._id}/${x.title}`}>{" "}Show details</Link></td>
               <td>{x.price}$</td>
               <td>
                 {x.color.map((x) => (

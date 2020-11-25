@@ -201,7 +201,7 @@ class NavbarContainer extends Component {
             {" "}
             Home
           </Link>
-          <NavbarToggler onClick={this.toggle} />
+          <NavbarToggler onClick={this.toggle}/>
           <Collapse isOpen={isOpen} navbar>
             {categoriesNavItems("men")}
             {categoriesNavItems("women")}
