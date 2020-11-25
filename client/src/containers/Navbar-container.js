@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, withRouter } from "react-router-dom";
 import { isBrowser } from "react-device-detect";
 import { connect } from "react-redux";
 import {
@@ -20,7 +20,7 @@ import {
   Badge,
 } from "reactstrap";
 
-import axios from 'axios';
+import axios from "axios";
 
 const styles = {
   itemMenu: {
@@ -55,8 +55,8 @@ class NavbarContainer extends Component {
       subMenuOpen: false,
       subMenuCategorySelected: "",
       openCartPreview: false,
-      searchContext: "",
-      queryList:[]
+      data: "",
+      queryList: [],
     };
   }
   toggle() {
@@ -80,14 +80,21 @@ class NavbarContainer extends Component {
   };
 
   searchContextHandler = (e) => {
-    this.setState({ searchContext: e.target.value });
+    this.setState({ data: e.target.value });
   };
   searchHandler = () => {
     //API Call
+    const data = this.state.data;
     try {
-      const response =  axios.post(`/api/query`)
-      const queryList =  response.data;
-      this.setState({ queryList })
+      const response = axios.post(`/api/query`, { data }).then((res) => {
+        console.log(res.data);
+        this.props.history.push({
+          pathname: "/result",
+          state: { data: res.data },
+        });
+      });
+
+      //this.setState({ queryList })
     } catch (error) {
       console.log(error);
     }
@@ -131,7 +138,7 @@ class NavbarContainer extends Component {
             to={`/category/${gender}`}
             className="text-white"
             onClick={() => {
-              resetKeywords(); 
+              resetKeywords();
               this.toggle();
               return;
             }}
@@ -211,7 +218,7 @@ class NavbarContainer extends Component {
         <div className="outer_seerch_box">
           <div className="search_div1">
             <SearchBar
-              searchValue={this.state.searchContext}
+              searchValue={this.state.data}
               searchValueHandler={this.searchContextHandler}
               searchHandler={this.searchHandler}
             />
@@ -244,4 +251,4 @@ const mapDispatchToProps = (dispatch) => ({
   resetKeywords: () => dispatch(resetKeywords()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavbarContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NavbarContainer));

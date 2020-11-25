@@ -5,6 +5,7 @@ import Loadable from 'react-loadable';
 import NavbarContainer from './containers/Navbar-container';
 import Footer from './components/Footer';
 import './style/transition.css';
+import SearchContainer from './containers/SearchContainer';
 
 
 const Loading = () => <div style={{height: '1000px'}}></div>;
@@ -62,6 +63,7 @@ const Router = () => (
         <Route exact path='/category/:gender' component={ItemsListGenderHomepage} />
         <Route exact path='/admin' component={AdminContainer} />
         <Route exact path='/dashboard' component={Secret} />
+        <Route exact path ='/result' component={SearchContainer}/>
         <Route component={Empty}/>
       </Switch>
     <Footer />

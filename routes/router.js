@@ -144,7 +144,7 @@ router.post('/query',(req,res) =>{
   }
 
   ModelProducts.find().or([tags,title,description]).then(data =>{
-    if(!Array.isArray(data) || data.length ===0) return res.status(404).json({error:'not found'})
+    //if(!Array.isArray(data) || data.length ===0) return res.status(404).json({error:'not found'})
     res.status(200).json(data);
   }).catch(err => res.status(404).json({error:'not found'}))
  
