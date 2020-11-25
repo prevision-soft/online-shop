@@ -20,6 +20,8 @@ import {
   Badge,
 } from "reactstrap";
 
+import axios from 'axios';
+
 const styles = {
   itemMenu: {
     padding: "10px",
@@ -54,6 +56,7 @@ class NavbarContainer extends Component {
       subMenuCategorySelected: "",
       openCartPreview: false,
       searchContext: "",
+      queryList:[]
     };
   }
   toggle() {
@@ -81,6 +84,13 @@ class NavbarContainer extends Component {
   };
   searchHandler = () => {
     //API Call
+    try {
+      const response =  axios.post(`/api/query`)
+      const queryList =  response.data;
+      this.setState({ queryList })
+    } catch (error) {
+      console.log(error);
+    }
     console.log("OK");
   };
 
