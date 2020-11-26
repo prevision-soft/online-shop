@@ -12,7 +12,7 @@ import {
   CustomInput, 
   FormFeedback
 } from 'reactstrap';
-
+import { Link } from 'react-router-dom';
 const propTypes = {
   email: PropTypes.string.isRequired, 
   step1: PropTypes.bool.isRequired, 
@@ -21,6 +21,7 @@ const propTypes = {
   onChangeEmail: PropTypes.func.isRequired,
   emailIsValid: PropTypes.bool.isRequired,
   handleEmailValidation: PropTypes.func.isRequired,
+  emailIsValid: PropTypes.bool.isRequired,
 };
 
 const CheckoutStepOne = ({
@@ -33,7 +34,7 @@ const CheckoutStepOne = ({
   handleEmailValidation,
   onChangeEmail
 }) => {
-  const emailValidation = (/^(([^<>()[].,;:\s@"]+(.[^<>()[].,;:\s@"]+)*)|(".+"))@(([^<>()[].,;:\s@"]+.)+[^<>()[].,;:\s@"]{2,})$/i).test(String(email).toLowerCase())
+  const emailValidation = (/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i).test(String(email).toLowerCase())
   return (
     <ListGroupItem disabled={!step1} style={styles.collapsePannel}>
       <h3 style={styles.collapasePannelTitle} onClick={()=>toggle('step1')} >

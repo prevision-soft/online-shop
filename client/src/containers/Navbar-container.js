@@ -134,13 +134,11 @@ class NavbarContainer extends Component {
         </NavItem>
       ) : (
         <NavItem style={itemMenu}>
-          <NavLink
+        <NavLink
             to={`/category/${gender}`}
             className="text-white"
             onClick={() => {
-              resetKeywords();
-              this.toggle();
-              return;
+              return resetKeywords(), this.toggle();
             }}
           >
             {gender}

@@ -183,7 +183,7 @@ const CheckoutStepTwo = ({
         <div className='d-flex align-items-center'>
           <Button disabled={false} onClick={()=>{
               if([...new Set(Object.entries(validatorClient).map(([k, v]) => (v)))].sort()[0]){
-                 stepsUnlock('step3'); addUserAddress({
+                return stepsUnlock('step3'), addUserAddress({
                   firstName,
                   lastName,
                   country,
@@ -194,7 +194,7 @@ const CheckoutStepTwo = ({
                   address1,
                   address2
                 })
-                return
+               
               } else {
                 formValidator(true)
               }

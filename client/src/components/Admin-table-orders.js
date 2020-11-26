@@ -21,7 +21,10 @@ export default class AdminTableOrders extends Component {
   }
 
   render() {
-   
+    const stylesColor = (color) => ({	
+      textDecoration: 'underline',	
+      textDecorationColor: color	
+    })
     const { stylesTab1 } = this.props
     const { apiList } = this.state
     return (
